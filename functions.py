@@ -20,3 +20,25 @@
 # o	Alumno 1: Función para agregar y mostrar contactos.
 # o	Alumno 2: Función para buscar y eliminar contactos.
 # o	Alumno 3: Estructura del menú principal y control de flujo del programa.
+ 
+import time, os
+def agregar(lista):
+        os.system("cls")
+        nombre = ""
+        tel    = 0
+        email  = ""
+        print("Agregar un contacto")
+        while len(nombre)<3:
+            nombre = input("ingrese un nombre:")
+        while tel == 0 and len(tel)>9 and len(tel)<9:
+            try:
+                tel = int(input("Ingrese número telefónico de 9 dígitos"))
+            except:
+                print("Ingrese valor numérico.")
+        while '@' not in email or len(email)<5:
+             email = input("Ingrese su email")
+        lista.append((nombre, tel, email))
+        print("Contacto agregado con éxito!")
+        time.sleep(0.9)
+
+
