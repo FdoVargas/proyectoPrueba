@@ -25,20 +25,24 @@ import time, os
 def agregar(lista):
         os.system("cls")
         nombre = ""
-        tel    = 0
+        tel    = ""
         email  = ""
         print("Agregar un contacto.")
         while len(nombre)<3:
             nombre = input("ingrese un nombre:")
-        while tel == 0 and len(tel)>9 and len(tel)<9:
-            try:
-                tel = int(input("Ingrese número telefónico de 9 dígitos"))
-            except:
-                print("Ingrese valor numérico.")
+        while len(tel)<9: 
+            tel = input("Ingrese número telefónico de 9 dígitos")
         while '@' not in email or len(email)<5:
              email = input("Ingrese su email")
         lista.append((nombre, tel, email))
         print("Contacto agregado con éxito!")
         time.sleep(0.9)
 
-
+def mostrar_contactos(lista):
+    if len(lista)==0:
+        print("No existen contactos en la lista")
+    else:
+        contador= 1
+        for nombre, tel, email in lista:
+            print(f"{contador+1}, Nombre:{nombre}, Telefono: {tel},Correo: {email}")
+        
