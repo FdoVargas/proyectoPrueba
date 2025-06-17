@@ -22,6 +22,7 @@
 # o	Alumno 3: Estructura del menú principal y control de flujo del programa.
  
 import time, os
+flag = True
 def agregar(lista):
         os.system("cls")
         nombre = ""
@@ -29,11 +30,11 @@ def agregar(lista):
         email  = ""
         print("Agregar un contacto.")
         while len(nombre)<3:
-            nombre = input("ingrese un nombre:")
+            nombre = input("ingrese un nombre:\n")
         while len(tel)<9: 
-            tel = input("Ingrese número telefónico de 9 dígitos")
+            tel = input("Ingrese número telefónico de 9 dígitos:\n")
         while '@' not in email or len(email)<5:
-             email = input("Ingrese su email")
+             email = input("Ingrese su email:\n")
         lista.append((nombre, tel, email))
         print("Contacto agregado con éxito!")
         time.sleep(0.9)
@@ -45,4 +46,16 @@ def mostrar_contactos(lista):
         contador= 1
         for nombre, tel, email in lista:
             print(f"{contador+1}, Nombre:{nombre}, Telefono: {tel},Correo: {email}")
-        
+
+def salir(lista):
+    print("Ha seleccionado salir.")
+
+def menu(lista):
+         print("""
+            Agenda contactos    
+    1.	Agregar un contacto: nombre, teléfono, email.
+    2.	Listar contactos: mostrar todos los contactos guardados.
+    3.	Buscar un contacto por nombre.
+    4.	Eliminar un contacto.
+    5.	Salir del programa.""")
+    
