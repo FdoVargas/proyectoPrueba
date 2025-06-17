@@ -27,7 +27,7 @@ def agregar(lista):
         nombre = ""
         tel    = 0
         email  = ""
-        print("Agregar un contacto")
+        print("Agregar un contacto.")
         while len(nombre)<3:
             nombre = input("ingrese un nombre:")
         while tel == 0 and len(tel)>9 and len(tel)<9:
