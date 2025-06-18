@@ -20,29 +20,57 @@
 # o	Alumno 1: Función para agregar y mostrar contactos.
 # o	Alumno 2: Función para buscar y eliminar contactos.
 # o	Alumno 3: Estructura del menú principal y control de flujo del programa.
- 
-import time, os
+
+import time
+import os
+
+
 def agregar(lista):
-        os.system("cls")
-        nombre = ""
-        tel    = ""
-        email  = ""
-        print("Agregar un contacto.")
-        while len(nombre)<3:
-            nombre = input("ingrese un nombre:")
-        while len(tel)<9: 
-            tel = input("Ingrese número telefónico de 9 dígitos")
-        while '@' not in email or len(email)<5:
-             email = input("Ingrese su email")
-        lista.append((nombre, tel, email))
-        print("Contacto agregado con éxito!")
-        time.sleep(0.9)
+    os.system("cls")
+    nombre = ""
+    tel = ""
+    email = ""
+    print("Agregar un contacto.")
+    while len(nombre) < 3:
+        nombre = input("ingrese un nombre:")
+    while len(tel) < 9:
+        tel = input("Ingrese número telefónico de 9 dígitos")
+    while '@' not in email or len(email) < 5:
+        email = input("Ingrese su email")
+    lista.append((nombre, tel, email))
+    print("Contacto agregado con éxito!")
+    time.sleep(0.9)
+
 
 def mostrar_contactos(lista):
-    if len(lista)==0:
+    if len(lista) == 0:
         print("No existen contactos en la lista")
     else:
-        contador= 1
+        contador = 1
         for nombre, tel, email in lista:
             print(f"{contador+1}, Nombre:{nombre}, Telefono: {tel},Correo: {email}")
-        
+
+
+def buscar_contacto(lista):
+    nombre_buscado = input("Ingresa el nombre del contacto a buscar: ").lower()
+    encontrado = False
+    for nombre, tel, email in lista:
+        if nombre.lower() == nombre_buscado:
+            print(f"Nombre: {nombre}, Teléfono: {tel}, Email: {email}")
+            encontrado = True
+    if not encontrado:
+        print("Contacto no existe.")
+
+
+def eliminar_contacto(lista):
+    nombre_buscado = input(
+        "Ingresa el nombre del contacto a eliminar: ").lower()
+    eliminado = False
+    for contacto in lista:
+        if contacto[0].lower() == nombre_buscado:
+            lista.remove(contacto)
+            print("Contacto eliminado con éxito.")
+            eliminado = True
+            break
+    if not eliminado:
+        print("Contacto no existe.")
